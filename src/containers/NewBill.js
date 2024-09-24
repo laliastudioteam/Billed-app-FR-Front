@@ -28,7 +28,7 @@ export default class NewBill {
 			["jpeg", "jpg", "png"].includes(fileExtension);
 		const fileExtension = fileName.split(".").pop().toLowerCase();
 		if (!isPicture(fileExtension)) {
-			//alert("Mauvais format");
+			alert("Mauvais format");
 			return;
 		}
 		const formData = new FormData();
