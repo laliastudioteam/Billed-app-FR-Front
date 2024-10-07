@@ -17,6 +17,19 @@ export default class NewBill {
 		this.billId = null;
 		new Logout({document, localStorage, onNavigate});
 	}
+	fetchBill = billId => {
+		return this.store
+			.bills()
+			.get(billId) // Assurez-vous que la méthode `get` existe dans votre store
+			.then(bill => {
+				return bill;
+			})
+			.catch(error => {
+				console.error(error);
+				throw error; // Propagation de l'erreur pour la gestion ultérieure
+			});
+	};
+
 	handleChangeFile = e => {
 		console.log("on esr la");
 		e.preventDefault();
@@ -31,6 +44,7 @@ export default class NewBill {
 			alert("Mauvais format");
 			return;
 		}
+
 		const formData = new FormData();
 		const email = JSON.parse(localStorage.getItem("user")).email;
 		formData.append("file", file);
