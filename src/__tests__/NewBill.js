@@ -28,7 +28,7 @@ describe("Given I am connected as an employee", () => {
 	});
 	// Condition of being on the bill creation page
 	describe("When I am on NewBill Page", () => {
-		// Form display test
+		// Form display unit test
 		test("Then the new bill form should be displayed", () => {
 			const html = NewBillUI();
 			document.body.innerHTML = html;
@@ -39,7 +39,7 @@ describe("Given I am connected as an employee", () => {
 	});
 	// Condition of uploading a file with good parameters / format
 	describe("When I upload a file with a valid format (jpg, jpeg, png)", () => {
-		// File submission test
+		// File submission unit test
 		test("Then the file should be accepted", () => {
 			const html = NewBillUI();
 			document.body.innerHTML = html;
@@ -64,7 +64,7 @@ describe("Given I am connected as an employee", () => {
 	});
 	// Condition of uploading a file with bad parameters / format
 	describe("When I upload a file with an invalid format (pdf)", () => {
-		// Alert display test
+		// Alert display unit test
 		test("Then an alert should be displayed", () => {
 			const html = NewBillUI();
 			document.body.innerHTML = html;
@@ -92,7 +92,7 @@ describe("Given I am connected as an employee", () => {
 	});
 	// Condition of submitting the form with good parameters
 	describe("When I submit the form with valid inputs", () => {
-		// New bill creation test
+		// New bill integration test
 		test("Then a new bill should be created", () => {
 			const html = NewBillUI();
 			document.body.innerHTML = html;
@@ -118,9 +118,9 @@ describe("Given I am connected as an employee", () => {
 	});
 	// Condition of submitting the form with good parameters
 	describe("When I try to fetch a bill that does not exist (404)", () => {
-		// Error log test
+		// Error log integration test
 		test("Then an error should be logged", async () => {
-			// Mock update Method pfor 500 error
+			// Mock update Method for 500 error
 			const errorMessage = "404 Not Found";
 			store.bills = jest.fn().mockReturnValue({
 				// Error ?
@@ -149,7 +149,7 @@ describe("Given I am connected as an employee", () => {
 	});
 	// Condition of submiting a bill with a 500 error
 	describe("When I submit a bill and there is a 500 error", () => {
-		// Error log test
+		// Error log integration test
 		test("Then an error should be logged", async () => {
 			const html = NewBillUI();
 			document.body.innerHTML = html;

@@ -56,7 +56,7 @@ describe("If connected as an employee", () => {
 	});
 	//Condition on beeing on the Bills page
 	describe("When I am on Bills Page", () => {
-		// Highlithed bill icon test
+		// Highlithed bill icon integration test
 		test("Then bill icon in vertical layout should be highlighted", async () => {
 			Object.defineProperty(window, "localStorage", {value: localStorageMock});
 			window.localStorage.setItem(
@@ -74,7 +74,7 @@ describe("If connected as an employee", () => {
 			const windowIcon = screen.getByTestId("icon-window");
 			expect(windowIcon.classList.contains("active-icon")).toBe(true);
 		});
-		// Antichronological data ordreing test
+		// Antichronological data ordreing unit test
 		test("Then bills should be ordered from earliest to latest", () => {
 			document.body.innerHTML = BillsUI({data: bills});
 			const dates = screen
@@ -87,7 +87,7 @@ describe("If connected as an employee", () => {
 			const datesSorted = [...dates].sort(antiChrono);
 			expect(dates).toEqual(datesSorted);
 		});
-		// Image display test
+		// Image display unit test
 		test("handleClickIconEye should display the bill image when icon-eye is clicked", () => {
 			// Bill picture Url
 			const falseBillUrl =
@@ -132,7 +132,7 @@ describe("If connected as an employee", () => {
 	});
 	// condition of retrieving data form mock
 	describe("When I fetch bills from mock API", () => {
-		// Bills fetech and display test
+		// Bills fetch and display integration test
 		test("Then bills should be fetched from API and displayed", async () => {
 			// Page Ui model
 			document.body.innerHTML = BillsUI({data: bills});
@@ -151,7 +151,7 @@ describe("If connected as an employee", () => {
 			expect(fetchedBills[0].date).toBe("4 Avr. 04");
 			expect(fetchedBills[1].date).toBe("3 Mar. 03");
 		});
-		// 404 error test
+		// 404 error integration test
 		test("Then it should show a 404 error message if an error occurs", async () => {
 			store.bills = jest.fn(() => ({
 				list: jest.fn(() => Promise.reject(new Error("Erreur 404"))),
@@ -175,7 +175,7 @@ describe("If connected as an employee", () => {
 				expect(errorMessage).toBeTruthy();
 			}
 		});
-		// 404 error test
+		// 500 error integration test
 		test("Then it should show a 500 error message if an error occurs", async () => {
 			store.bills = jest.fn(() => ({
 				list: jest.fn(() => Promise.reject(new Error("Erreur 500"))),
